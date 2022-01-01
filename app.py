@@ -12,7 +12,7 @@ app = Flask(__name__)
 def hello():
     return "hey"
 @app.route("/yes", methods=['GET'])
-def hello():
+def yes():
     arg = request.args('arg1')
     return "hello world", arg1
 @app.route('/predict', methods=['GET'])
