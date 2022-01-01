@@ -3,6 +3,7 @@ from flask import request
 import pandas as pd
 import numpy as np
 import joblib
+import xgboost as xgb
 from xgboost import XGBClassifier
 from flask_restful import reqparse
 
