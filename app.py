@@ -7,16 +7,56 @@ import sklearn
 import xgboost as xgb
 from xgboost import XGBClassifier
 from flask_restful import reqparse
+from sklearn.metrics import f1_score
 
 app = Flask(__name__)
+
 
 @app.route("/", methods=['GET'])
 def hello():
     return "hey"
-@app.route("/yes", methods=['GET'])
-def yes():
-    arg = request.args('arg1')
-    return "hello world", arg1
+    
+@app.route('/test', methods=['GET'])
+def test():
+    train = pd.read_csv("OvarianCancer.csv")
+    X = train.copy()
+    y = X.pop('TYPE')
+
+    size = int(X.shape[0] * .8)
+    train = X[:size]
+    y_train = y[:size]
+    test = X[size:]
+    y_test = y[size:]
+
+    params = {
+    'n_estimators': 100,
+    'colsample_bytree': 0.8,
+    'objective': 'binary:logistic',
+    'max_depth': 7,
+    'min_child_weight': 1,
+    'learning_rate': 0.1,
+    'subsample': 0.8,
+    'eta': 0.2
+    }
+
+    dtrain = xgb.DMatrix(train, y_train)
+    dtest = xgb.DMatrix(test)
+
+    model = xgb.cv(
+    params=params,
+    dtrain=dtrain,
+    num_boost_round=500,
+    nfold=5,
+    early_stopping_rounds=100
+    )
+
+    # Fit
+    final_gb = xgb.train(params, dtrain, num_boost_round=len(model))
+
+    preds = final_gb.predict(dtest)
+    f1 = f1_score(y_test, preds)
+    print(f1)
+    
 @app.route('/predict', methods=['GET'])
 def predict():
     #lr = xgb.XGBClassifier()
