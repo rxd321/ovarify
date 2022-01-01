@@ -4,5 +4,4 @@ gunicorn
 xgboost
 numpy
 joblib
-traceback
 flask_restful
