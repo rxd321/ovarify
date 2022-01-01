@@ -19,7 +19,8 @@ def yes():
     return "hello world", arg1
 @app.route('/predict', methods=['GET'])
 def predict():
-    lr = xgb.XGBClassifier()
+    #lr = xgb.XGBClassifier()
+    lr = xgb.Booster()
     lr.load_model("model.json")
     age = 69.00
     cea = 1.020
