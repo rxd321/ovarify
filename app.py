@@ -24,7 +24,7 @@ def predict():
     "learning_rate": 0.01,
     "max_depth": 3
     }
-    lr = xgb.Booster(param)
+    lr = xgb.Booster(params)
     lr.load_model("model.json")
     age = 69.00
     cea = 1.020
