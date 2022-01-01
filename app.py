@@ -17,7 +17,7 @@ def yes():
     return "hello world", arg1
 @app.route('/predict', methods=['GET'])
 def predict():
-    lr = joblib.load("model.pkl")
+    lr = joblib.load("model.json")
     age = 69.00
     cea = 1.020
     ibil = 9.800
