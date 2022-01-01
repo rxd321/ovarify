@@ -20,7 +20,11 @@ def yes():
 @app.route('/predict', methods=['GET'])
 def predict():
     #lr = xgb.XGBClassifier()
-    lr = xgb.Booster()
+    params = {
+    "learning_rate": 0.01,
+    "max_depth": 3
+    }
+    lr = xgb.Booster(param)
     lr.load_model("model.json")
     age = 69.00
     cea = 1.020
@@ -34,7 +38,7 @@ def predict():
     lym = 28.100
     if lr:
       json = request.get_json()  
-      model_columns = joblib.load("model_cols.pkl")
+      #model_columns = joblib.load("model_cols.pkl")
       age = 69.00
       cea = 1.020
       ibil = 9.800
@@ -58,7 +62,7 @@ def predict():
           'LYM%': [lym],               
         }
       x_test = pd.DataFrame(x_test, columns= ['Age', 'CEA', 'IBIL', 'NEU', 'Menopause', 'CA125', 'ALB', 'HE4', 'GLO', 'LYM%'],dtype=float)
-      model_columns = joblib.load("model_cols.pkl")
+      #model_columns = joblib.load("model_cols.pkl")
       
       p = lr.predict(x_test)
       print("Cancer [0 - No Yes - 1] :\n Result : ",p[0])
