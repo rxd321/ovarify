@@ -26,15 +26,35 @@
         <form action="{{ url_for('main') }}" method="POST">
         <fieldset>
             <legend>Input values:</legend>
-            Temperature:
-            <!-- Required attribute is used to make sure people input values -->
-            <input name="temperature" type="number" required>
+            Age:
+            <input name="age" type="number" required>
             <br>
-            <br> Humidity:
-            <input name="humidity" type="number" required>
+            <br> CEA:
+            <input name="cea" type="number" required>
             <br>
-            <br> Windspeed:
-            <input name="windspeed" type="number" required>
+            <br> IBIL:
+            <input name="ibil" type="number" required>
+            <br>
+            NEU:
+            <input name="neu" type="number" required>
+            <br>
+            <br> Menopause (0 for false and 1 for true):
+            <input name="meno" type="number" required>
+            <br>
+            <br> CA125:
+            <input name="ca125" type="number" required>
+            <br>
+            ALB:
+            <input name="alb" type="number" required>
+            <br>
+            <br> HE4:
+            <input name="he4" type="number" required>
+            <br>
+            <br> GLO:
+            <input name="ibil" type="glo" required>
+            <br>
+            <br> LYM%:
+            <input name="lym" type="number" required>
             <br>
             <br>
             <input type="submit">
@@ -54,7 +74,7 @@
                 {% endfor %}
                 <br>
                 <!-- Print prediction -->
-                <br> Predicted number of bikes in use:
+                <br> The recommendation for an advanced screening for Ovarian Cancer :
                 <p style="font-size:50px">{{ result }}</p>
             
             {% endif %}
