@@ -35,7 +35,7 @@ def main():
         # Get the model's prediction
         # Given that the prediction is stored in an array we simply extract by indexing
         prediction = model.predict(input_variables)[0]
-        result1 = float(model.predict_proba(input_variables)[0])
+        result1 = model.predict_proba(input_variables)[0]
         result2 = model.predict_proba(input_variables)[0]
     
         # We now pass on the input from the from and the prediction to the index page
