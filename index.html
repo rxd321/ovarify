@@ -1,85 +1,0 @@
-<!doctype html>
- 
-<html>
-    <head>
- 
-        <!-- CSS code -->
-        <style>
-        form {
-            margin: auto;
-            width: 35%;
-        }
- 
-        .result {
-            margin: auto;
-            width: 35%;
-            border: 1px solid #ccc;
-        }
-        </style>
- 
-        <title>Bike Usage Model</title>
-    </head>
- 
-    <body>
- 
-        <!-- Use the action attribute to call the 'main' function -->
-        <form action="{{ url_for('main') }}" method="POST">
-        <fieldset>
-            <legend>Input values:</legend>
-            Age:
-            <input name="age" type="number" required>
-            <br>
-            <br> CEA:
-            <input name="cea" type="number" required>
-            <br>
-            <br> IBIL:
-            <input name="ibil" type="number" required>
-            <br>
-            NEU:
-            <input name="neu" type="number" required>
-            <br>
-            <br> Menopause (0 for false and 1 for true):
-            <input name="meno" type="number" required>
-            <br>
-            <br> CA125:
-            <input name="ca125" type="number" required>
-            <br>
-            ALB:
-            <input name="alb" type="number" required>
-            <br>
-            <br> HE4:
-            <input name="he4" type="number" required>
-            <br>
-            <br> GLO:
-            <input name="ibil" type="glo" required>
-            <br>
-            <br> LYM%:
-            <input name="lym" type="number" required>
-            <br>
-            <br>
-            <input type="submit">
-        </fieldset>
-        </form>
- 
-        <br>
- 
-        <div class="result" align="center">
-            
-            <!-- Our 'result' is false until a prediction has been made -->
-            {% if result %}
- 
-                <!-- Loop through dictionary and print key:value pair -->
-                {% for variable in original_input %}
-                    <b>{{ variable }}:</b> {{ original_input[variable] }}
-                {% endfor %}
-                <br>
-                <!-- Print prediction -->
-                <br> The recommendation for an advanced screening for Ovarian Cancer :
-                <p style="font-size:50px">{{ result }}</p>
-            
-            {% endif %}
-        </div>
- 
-    </body>
- 
-</html>
