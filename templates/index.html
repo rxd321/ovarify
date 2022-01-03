@@ -74,7 +74,7 @@
         <div class="result" align="center">
             
             <!-- Our 'result' is false until a prediction has been made -->
-            {% if result >= 0.0 %}
+            {% if result1 >= 0.0 %}
  
                 <!-- Loop through dictionary and print key:value pair -->
                 {% for variable in original_input %}
@@ -82,7 +82,7 @@
                 {% endfor %}
                 <br>
                 <!-- Print prediction -->
-                {% if result > 0.0 %}
+                {% if result1 > 0.0 %}
                 <br> <p style="font-size:50px">The ML model does suggest an advanced screening for Ovarian Cancer</p>
                 {% else %}
                 <br> <p style="font-size:50px">The ML model does NOT suggest an advanced screening for Ovarian Cancer</p>
