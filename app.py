@@ -34,7 +34,7 @@ def main():
         return "test" #render_template("index.html",
                                      #original_input={'Temperature':temperature,
                                       #               'Humidity':humidity,
-                                                     'Windspeed':windspeed},
+                                                     #'Windspeed':windspeed},
                                      #result=prediction
                                      #)
     # If the request method is GET
