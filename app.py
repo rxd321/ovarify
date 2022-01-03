@@ -13,18 +13,22 @@ model = pickle.load(open(filename, "rb"))
 # Set up the main route
 @app.route('/', methods=["GET", "POST"])
 def main():
-
+df[['Age','CEA','IBIL','NEU','Menopause','CA125','ALB','HE4','GLO','LYM%']]
     if request.method == "POST":
         # Extract the input from the form
-        temperature = request.form.get("temperature")
-        humidity = request.form.get("humidity")
-        windspeed = request.form.get("windspeed")
-        print(temperature)
-        print(humidity)
-        print(windspeed)
+        age = request.form.get("age")
+        cea = request.form.get("cea")
+        ibil = request.form.get("ibil")
+        neu = request.form.get("neu")
+        meno = request.form.get("menopause")
+        ca125 = request.form.get("ca125")
+        alb = request.form.get("alb")
+        he4 = request.form.get("he4")
+        glo = request.form.get("glo")
+        lym = request.form.get("lym")
         # Create DataFrame based on input
-        input_variables = pd.DataFrame([[temperature, humidity, windspeed]],
-                                       columns=['temperature', 'humidity', 'windspeed'],
+        input_variables = pd.DataFrame([[age, cea, ibil,neu,meno,ca125,alb,he4,glo,lym]],
+                                       columns=['Age','CEA','IBIL','NEU','Menopause','CA125','ALB','HE4','GLO','LYM%'],
                                        dtype=float,
                                        index=['input'])
 
@@ -33,6 +37,6 @@ def main():
         prediction = model.predict(input_variables)[0]
     
         # We now pass on the input from the from and the prediction to the index page
-        return render_template("index.html", original_input={'Temperature':temperature,'Humidity':humidity,'Windspeed':windspeed}, result=prediction )
+        return render_template("index.html", original_input={'Age':age,'CEA':cea,'IBIL':ibil}, result=prediction )
     # If the request method is GET
     return render_template("index.html")
