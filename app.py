@@ -31,11 +31,11 @@ def main():
         prediction = model.predict(input_variables)[0]
     
         # We now pass on the input from the from and the prediction to the index page
-        return render_template("index.html",
-                                     original_input={'Temperature':temperature,
-                                                     'Humidity':humidity,
+        return "test" #render_template("index.html",
+                                     #original_input={'Temperature':temperature,
+                                      #               'Humidity':humidity,
                                                      'Windspeed':windspeed},
-                                     result=prediction
-                                     )
+                                     #result=prediction
+                                     #)
     # If the request method is GET
-    return render_template("index.html")
+    return "error" #render_template("index.html")
