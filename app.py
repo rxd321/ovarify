@@ -13,7 +13,7 @@ model = pickle.load(open(filename, "rb"))
 # Set up the main route
 @app.route('/', methods=["GET", "POST"])
 def main():
-df[['Age','CEA','IBIL','NEU','Menopause','CA125','ALB','HE4','GLO','LYM%']]
+
     if request.method == "POST":
         # Extract the input from the form
         age = request.form.get("age")
