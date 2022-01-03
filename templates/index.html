@@ -2,7 +2,7 @@
  
 <html>
     <head>
- 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <!-- CSS code -->
         <style>
         form {
@@ -16,8 +16,8 @@
             border: 1px solid #ccc;
         }
         </style>
- 
-        <title>Bike Usage Model</title>
+        
+        <title>Ovarian Cancer Model</title>
     </head>
  
     <body>
@@ -25,9 +25,12 @@
         <!-- Use the action attribute to call the 'main' function -->
         <form action="{{ url_for('main') }}" method="POST">
         <fieldset>
-            <legend>Input values:</legend>
-            Age:
-            <input name="age" type="number" required>
+            <legend>Ovarican Cancer Model Quiz</legend>
+            <div class="form-group">
+            <h1>Find out if you need a follow-up diagnosis of Ovarian Cancer</h1>
+            <div class="element">
+            <label for="age">Age: </label>
+            <input name="age" min="15" max="90" type="number" required>
             <br>
             <br> CEA:
             <input name="cea" type="number" required>
@@ -58,6 +61,7 @@
             <br>
             <br>
             <input type="submit">
+        </div>
         </fieldset>
         </form>
  
