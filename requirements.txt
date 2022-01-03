@@ -9,3 +9,5 @@ pandas
 xgboost
 scikit-learn
 pickle-mixin
+flask_restful
+sklearn
