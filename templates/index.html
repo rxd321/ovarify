@@ -75,135 +75,145 @@
             </div>
             <div class="col" name="col2">
                 <div class="container">
-                  <div class="row">
-                      {% if not(result) %}
-                              <!-- Use the action attribute to call the 'main' function -->
-                              <form action="{{ url_for('main') }}" method="POST">
-                                <div class="form-row">
-                                  <div class="form-group col-md-6">
+                    <!-- Use the action attribute to call the 'main' function -->
+                    <form action="{{ url_for('main') }}" method="POST">
+                        {% if not(result) %}
+                        <div class="row">
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
                                     <label for="inputAge">Age</label>
-                                    <input type="text" class="form-control" id="inputAge">
-                                  </div>
-                                  <div class="form-group col-md-4">
+                                    <input type="number" class="form-control" id="inputAge" required>
+                                </div>
+                                <div class="form-group col-md-4">
                                     <label for="inputCEA">CEA</label>
-                                    <select id="inputCEA" class="form-control">
-                                      <option selected>Choose...</option>
-                                      <option>...</option>
-                                    </select>
-                                  </div>
-                                  <div class="form-group col-md-2">
+                                    <input type="number" class="form-control" id="inputCEA" required>
+                                </div>
+                                <div class="form-group col-md-4">
                                     <label for="inputIBIL">IBIL</label>
-                                    <input type="text" class="form-control" id="inputIBIL">
-                                  </div>
+                                    <input type="number" class="form-control" id="inputIBIL" required>
                                 </div>
-                                <div class="form-row">
-                                  <div class="form-group col-md-6">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
                                     <label for="inputNEU">NEU</label>
-                                    <input type="text" class="form-control" id="inputNEU">
-                                  </div>
-                                  <div class="form-group col-md-4">
+                                    <input type="number" class="form-control" id="inputNEU" required>
+                                </div>
+                                <div class="form-group col-md-4">
                                     <label for="inputMenopause">Menopause</label>
-                                    <select id="inputMenopause" class="form-control">
-                                      <option selected>Choose...</option>
-                                      <option>...</option>
+                                    <select id="inputMenopause" class="form-control" required>
+                                        <option selected>Choose...</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
                                     </select>
-                                  </div>
-                                  <div class="form-group col-md-2">
+                                </div>
+                                <div class="form-group col-md-4">
                                     <label for="inputCA125">CA125</label>
-                                    <input type="text" class="form-control" id="inputCA125">
-                                  </div>
+                                    <input type="number" class="form-control" id="inputCA125" required>
                                 </div>
-                                <div class="form-row">
-                                  <div class="form-group col-md-6">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
                                     <label for="inputALB">ALB</label>
-                                    <input type="text" class="form-control" id="inputALB">
-                                  </div>
-                                  <div class="form-group col-md-4">
+                                    <input type="number" class="form-control" id="inputALB" required>
+                                </div>
+                                <div class="form-group col-md-4">
                                     <label for="inputHE4">HE4</label>
-                                    <select id="inputHE4" class="form-control">
-                                      <option selected>Choose...</option>
-                                      <option>...</option>
-                                    </select>
-                                  </div>
-                                  <div class="form-group col-md-2">
+                                    <input type="number" class="form-control" id="inputHE4" required>
+                                </div>
+                                <div class="form-group col-md-2">
                                     <label for="inputGLO">GLO</label>
-                                    <input type="text" class="form-control" id="inputGLO">
-                                  </div>
-                                  <div class="form-group col-md-2">
-                                    <label for="inputLYM%">LYM%</label>
-                                    <input type="text" class="form-control" id="inputLYM%">
-                                  </div>
+                                    <input type="number" class="form-control" id="inputGLO" required>
                                 </div>
-                                
-                                <div class="form-group">
-                                  <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                                    <label class="form-check-label" for="gridCheck">
-                                      Check me out
-                                    </label>
-                                  </div>
+                                <div class="form-group col-md-2">
+                                    <label for="inputLYM">LYM%</label>
+                                    <input type="number" class="form-control" id="inputLYM" required>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Sign in</button>
-                              </form>
-                                  <div class="form-group">
-                                  <h1>Find out if you need a follow-up diagnosis of Ovarian Cancer</h1>
-                                  <div class="element">
-                                  <label for="age">Age: </label>
-                                  <input name="age" min="15" max="90" type="number" required>
-                                  <br>
-                                  <br> CEA:
-                                  <input name="cea" type="number" required>
-                                  <br>
-                                  <br> IBIL:
-                                  <input name="ibil" type="number" required>
-                                  <br>
-                                  <br> NEU:
-                                  <input name="neu" type="number" required>
-                                  <br>
-                                  <br> Menopause (0 for false and 1 for true):
-                                  <input name="meno" type="number" required>
-                                  <br>
-                                  <br> CA125:
-                                  <input name="ca125" type="number" required>
-                                  <br>
-                                  <br> ALB:
-                                  <input name="alb" type="number" required>
-                                  <br>
-                                  <br> HE4:
-                                  <input name="he4" type="number" required>
-                                  <br>
-                                  <br> GLO:
-                                  <input name="glo" type="number" required>
-                                  <br>
-                                  <br> LYM%:
-                                  <input name="lym" type="number" required>
-                                  <br>
-                                  <br>
-                                  <input type="submit">
-                              </div>
-                                 {% endif %}
-                              <br>
-                           {% if result %}
-                             
-                                  <div class="result" align="center">
-                                      <!-- Our 'result' is false until a prediction has been made -->
-                                      
-                                          <!-- Loop through dictionary and print key:value pair -->
-                                          {% for variable in original_input %}
-                                              <b>{{ variable }}:</b> {{ original_input[variable] }}
-                                          {% endfor %}
-                                          <br>
-                                          <!-- Print prediction -->
-                                          {% if prediction[0] > 0.5 %}
-                                          <br> <p style="font-size:50px">The ML model does suggest an advanced screening for Ovarian Cancer</p>
-                                          {% else %}
-                                          <br> <p style="font-size:50px">The ML model does NOT suggest an advanced screening for Ovarian Cancer</p>
-                                          {% endif %}
-                                  
-                                  </div>
-                          
-                              {% endif %}
-                  </div>
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        {% if result %}
+                        <div class="row">
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="inputAge">Age</label>
+                                    <input type="number" class="form-control" id="inputAge" required value="{{ original_input['Age'] }}">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputCEA">CEA</label>
+                                    <input type="number" class="form-control" id="inputCEA" required>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputIBIL">IBIL</label>
+                                    <input type="number" class="form-control" id="inputIBIL" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="inputNEU">NEU</label>
+                                    <input type="number" class="form-control" id="inputNEU" required>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputMenopause">Menopause</label>
+                                    <select id="inputMenopause" class="form-control" required>
+                                        <option selected>Choose...</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputCA125">CA125</label>
+                                    <input type="number" class="form-control" id="inputCA125" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="inputALB">ALB</label>
+                                    <input type="number" class="form-control" id="inputALB" required>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputHE4">HE4</label>
+                                    <input type="number" class="form-control" id="inputHE4" required>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="inputGLO">GLO</label>
+                                    <input type="number" class="form-control" id="inputGLO" required>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="inputLYM">LYM%</label>
+                                    <input type="number" class="form-control" id="inputLYM" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="result" align="center">
+                            <!-- Our 'result' is false until a prediction has been made -->
+                            <!-- Loop through dictionary and print key:value pair -->
+                            {% for variable in original_input %}
+                            <b>{{ variable }}:</b> {{ original_input[variable] }}
+                            {% endfor %}
+                            <br>
+                            <!-- Print prediction -->
+                            {% if prediction[0] > 0.5 %}
+                            <br> <p style="font-size:12px">The ML model does suggest an advanced screening for Ovarian Cancer</p>
+                            {% else %}
+                            <br> <p style="font-size:12px">The ML model does NOT suggest an advanced screening for Ovarian Cancer</p>
+                            {% endif %}
+
+                        </div>
+
+                        {% endif %}
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="gridCheck">
+                                <label class="form-check-label" for="gridCheck">
+                                    This tool is an approximation based on a machine learning model and should not be construed as medical advice.
+                                </label>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Predict</button>
+                    </form>
+                </div>
                 </div>
             </div>
           </div>
