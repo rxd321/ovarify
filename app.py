@@ -31,8 +31,6 @@ def main():
                                        columns=['Age','CEA','IBIL','NEU','Menopause','CA125','ALB','HE4','GLO','LYM%'],
                                        dtype=float,
                                        index=['input'])
-        print('HELLO')
-        print(meno)
         
         # Get the model's prediction
         # Given that the prediction is stored in an array we simply extract by indexing
