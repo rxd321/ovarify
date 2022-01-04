@@ -34,11 +34,9 @@ def main():
 
         # Get the model's prediction
         # Given that the prediction is stored in an array we simply extract by indexing
-        prediction = model.predict(input_variables)[0]
-        result1 = model.predict_proba(input_variables)[0]
-        result2 = model.predict_proba(input_variables)[0]
+        prediction = model.predict(input_variables)
     
         # We now pass on the input from the from and the prediction to the index page
-        return render_template("index.html", original_input={'Age':age,'CEA':cea,'IBIL':ibil}, result=prediction, result1= result1, result2=result2)
+        return render_template("index.html", original_input={'Age':age,'CEA':cea,'IBIL':ibil,NEU','Menopause':meno,,'CA125':ca125,'ALB':alb,'HE4':he4,'GLO':glo,'LYM%':lym}, result=true, prediction=prediction)
     # If the request method is GET
-    return render_template("index.html")
+    return render_template("index.html", result=false)
