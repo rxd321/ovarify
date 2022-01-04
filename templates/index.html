@@ -21,7 +21,7 @@
     </head>
  
     <body>
- 
+ {% if !result %}
         <!-- Use the action attribute to call the 'main' function -->
         <form action="{{ url_for('main') }}" method="POST">
         <fieldset>
@@ -38,7 +38,7 @@
             <br> IBIL:
             <input name="ibil" type="number" required>
             <br>
-            NEU:
+            <br> NEU:
             <input name="neu" type="number" required>
             <br>
             <br> Menopause (0 for false and 1 for true):
@@ -47,7 +47,7 @@
             <br> CA125:
             <input name="ca125" type="number" required>
             <br>
-            ALB:
+            <br> ALB:
             <input name="alb" type="number" required>
             <br>
             <br> HE4:
@@ -64,30 +64,29 @@
         </div>
         </fieldset>
         </form>
- 
+    {% endif %}
         <br>
-        
-        <div class="result" align="center">
-            The prediction result - <p style="font-size:50px">{{ result }}</p>
-        </div>
- 
-        <div class="result" align="center">
-            <!-- Our 'result' is false until a prediction has been made -->
-            {% if result %}
-                <!-- Loop through dictionary and print key:value pair -->
-                {% for variable in original_input %}
-                    <b>{{ variable }}:</b> {{ original_input[variable] }}
-                {% endfor %}
-                <br>
-                <!-- Print prediction -->
-                {% if prediction[0] > 0.5 %}
-                <br> <p style="font-size:50px">The ML model does suggest an advanced screening for Ovarian Cancer</p>
-                {% else %}
-                <br> <p style="font-size:50px">The ML model does NOT suggest an advanced screening for Ovarian Cancer</p>
-                {% endif %}
+     {% if result %}
+        <fieldset>
+            <legend>Entered values </legend>
+            <div class="result" align="center">
+                <!-- Our 'result' is false until a prediction has been made -->
+                
+                    <!-- Loop through dictionary and print key:value pair -->
+                    {% for variable in original_input %}
+                        <b>{{ variable }}:</b> {{ original_input[variable] }}
+                    {% endfor %}
+                    <br>
+                    <!-- Print prediction -->
+                    {% if prediction[0] > 0.5 %}
+                    <br> <p style="font-size:50px">The ML model does suggest an advanced screening for Ovarian Cancer</p>
+                    {% else %}
+                    <br> <p style="font-size:50px">The ML model does NOT suggest an advanced screening for Ovarian Cancer</p>
+                    {% endif %}
             
-            {% endif %}
-        </div>
+            </div>
+            </fieldset>
+        {% endif %}
  
     </body>
  
