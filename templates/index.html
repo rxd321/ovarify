@@ -9,12 +9,15 @@
             margin: auto;
             width: 35%;
         }
- 
+        label{   
+            font-weight:bold;
+        } 
         .result {
             margin: auto;
             width: 35%;
             border: 1px solid #ccc;
         }
+
         </style>
        
         
@@ -26,7 +29,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4" name="col1">
-                    <div class="container">
+                    <div class="container" style="background-image:src('image1.png')">
                         <div class="row">
                             <b>CEA</b>
                             Also known as Carcinoembryonic Antigen, CEA is a protein present in the blood that can be found in higher quantities in patients with colorectal cancer. The normal range for this biomarker is between 0 and 2.5 ng/ml, and for a smoker, the range is between 0 and 5.0 ng/ml.
@@ -114,7 +117,7 @@
                                         <label for="inputMenopause">Menopause</label>
 
                                         <select id="inputMenopause" name="meno" class="form-control" required>
-
+                                            <option value=""></option>
                                             <option value="1">Yes</option>
                                             <option value="0">No</option>
                                         </select>
@@ -191,27 +194,23 @@
                                         <label for="inputNEU">NEU</label>
                                         <input type="number" class="form-control" name="neu" id="inputNEU" required value="{{ original_input['NEU']}}">
                                     </div>
-                                </div>
+                                </div> 
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
-                                        <label for="inputNEU1">TEST</label>
-                                        <input type="text" class="form-control" name="test" id="inputNEU1" value="{{ original_input['Menopause'] }}">
-                                    </div>
-                                </div>
-                                
-                                <div class="form-row">
-
-                                    <div class="form-group col-md-12">
-
                                         <label for="inputMenopause">Menopause</label>
-
                                         <select id="inputMenopause" name="meno" class="form-control" required>
                                             {% if original_input['Menopause'] == "1" %}
+                                            <option value=""></option>
                                             <option value="1" selected>Yes</option>
                                             <option value="0">No</option>
                                             {% elif original_input['Menopause'] == "0" %}
+                                            <option value=""></option>
                                             <option value="1">Yes</option>
                                             <option value="0" selected>No</option>
+                                            {% else %}
+                                            <option value="" selected></option>
+                                            <option value="1">Yes</option>
+                                            <option value="0">No</option>
                                             {% endif %}
                                         </select>
                                     </div>
