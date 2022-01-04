@@ -37,6 +37,6 @@ def main():
         prediction = model.predict(input_variables)
     
         # We now pass on the input from the from and the prediction to the index page
-        return render_template("index.html", original_input={'Age':age,'CEA':cea,'IBIL':ibil,'NEU':neu,'Menopause':meno,'CA125':ca125,'ALB':alb,'HE4':he4,'GLO':glo,'LYM%':lym}, result=true, prediction=prediction)
+        return render_template("index.html", original_input={'Age':age,'CEA':cea,'IBIL':ibil,'NEU':neu,'Menopause':meno,'CA125':ca125,'ALB':alb,'HE4':he4,'GLO':glo,'LYM%':lym}, result=True, prediction=prediction)
     # If the request method is GET
-    return render_template("index.html", result=false)
+    return render_template("index.html", result=False)
