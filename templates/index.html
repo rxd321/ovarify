@@ -109,12 +109,13 @@
 
                                 <div class="form-group col-md-12">
                                     
-                           
-                                    <div class="custom-control custom-switch">
-                                        <label class="custom-control-label" for="customSwitch1">Menopause</label>
-                                        <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                    <label for="inputMenopause">Menopause</label>
 
-                                    </div>
+                                    <select id="inputMenopause" name="meno" class="form-control" required>
+                                        <option selected>Choose...</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
                                 </div>
 
                             </div>
@@ -164,53 +165,83 @@
                         {% if result %}
                         <div class="row">
                             <div class="form-row">
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-12">
                                     <label for="inputAge">Age</label>
-                                    <input type="number" class="form-control" name="age" id="inputAge" required value="{{ original_input['Age'] }}">
+                                    <input type="number" class="form-control" name="age" id="inputAge" required value="{{ original_input['Age']}}">
                                 </div>
-                                <div class="form-group col-md-4">
+
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
                                     <label for="inputCEA">CEA</label>
-                                    <input type="number" class="form-control" id="inputCEA" required>
+                                    <input type="number" class="form-control" name="cea" id="inputCEA" required value="{{ original_input['CEA']}}">
                                 </div>
-                                <div class="form-group col-md-4">
+
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
                                     <label for="inputIBIL">IBIL</label>
-                                    <input type="number" class="form-control" id="inputIBIL" required>
+                                    <input type="number" class="form-control" name="ibil" id="inputIBIL" required value="{{ original_input['IBIL']}}">
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-12">
                                     <label for="inputNEU">NEU</label>
-                                    <input type="number" class="form-control" id="inputNEU" required>
+                                    <input type="number" class="form-control" name="neu" id="inputNEU" required value="{{ original_input['NEU']}}">
                                 </div>
-                                <div class="form-group col-md-4">
+                            </div>
+                            <div class="form-row">
+
+                                <div class="form-group col-md-12">
+
                                     <label for="inputMenopause">Menopause</label>
-                                    <select id="inputMenopause" class="form-control" required>
+
+                                    <select id="inputMenopause" name="meno" class="form-control" required>
                                         <option selected>Choose...</option>
                                         <option value="1">Yes</option>
                                         <option value="0">No</option>
                                     </select>
                                 </div>
-                                <div class="form-group col-md-4">
+
+                            </div>
+                            <div class="form-row">
+
+                                <div class="form-group col-md-12">
                                     <label for="inputCA125">CA125</label>
-                                    <input type="number" class="form-control" id="inputCA125" required>
+                                    <input type="number" class="form-control" name="ca125" id="inputCA125" required value="{{ original_input['CA125']}}">
+                                </div>
+
+                            </div>
+                            <div class="form-row">
+
+                                <div class="form-group col-md-12">
+                                    <label for="inputALB">ALB</label>
+                                    <input type="number" class="form-control" name="alb" id="inputALB" required value="{{ original_input['ALB']}}">
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-md-4">
-                                    <label for="inputALB">ALB</label>
-                                    <input type="number" class="form-control" id="inputALB" required>
-                                </div>
-                                <div class="form-group col-md-4">
+
+                                <div class="form-group col-md-12">
                                     <label for="inputHE4">HE4</label>
-                                    <input type="number" class="form-control" id="inputHE4" required>
+                                    <input type="number" class="form-control" name="he4" id="inputHE4" required value="{{ original_input['HE4']}}">
                                 </div>
-                                <div class="form-group col-md-2">
+
+                            </div>
+                            <div class="form-row">
+
+
+                                <div class="form-group col-md-12">
                                     <label for="inputGLO">GLO</label>
-                                    <input type="number" class="form-control" id="inputGLO" required>
+                                    <input type="number" class="form-control" name="glo" id="inputGLO" required value="{{ original_input['GLO']}}">
                                 </div>
-                                <div class="form-group col-md-2">
+
+                            </div>
+                            <div class="form-row">
+
+
+                                <div class="form-group col-md-12">
                                     <label for="inputLYM">LYM%</label>
-                                    <input type="number" class="form-control" id="inputLYM" required>
+                                    <input type="number" class="form-control" name="lym" id="inputLYM" required value="{{ original_input['LYM%']}}">
                                 </div>
                             </div>
                         </div>
