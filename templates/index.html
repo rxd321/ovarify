@@ -193,10 +193,17 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputNEU1">TEST</label>
+                                        <input type="number" class="form-control" name="test" id="inputNEU1" required value="{{ original_input['Menopause'] }}">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
 
                                     <div class="form-group col-md-12">
 
-                                        <label for="inputMenopause">Menopause1</label>
+                                        <label for="inputMenopause">Menopause</label>
 
                                         <select id="inputMenopause" name="meno" class="form-control" required>
                                             {% if original_input['Menopause'] == "1" %}
@@ -205,8 +212,6 @@
                                             {% elif original_input['Menopause'] == "0" %}
                                             <option value="1">Yes</option>
                                             <option value="0" selected>No</option>
-                                            {% else %}
-                                            {{ original_input['Menopause'] }}
                                             {% endif %}
                                         </select>
                                     </div>
