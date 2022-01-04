@@ -21,73 +21,101 @@
     </head>
  
     <body>
- {% if not(result) %}
-        <!-- Use the action attribute to call the 'main' function -->
-        <form action="{{ url_for('main') }}" method="POST">
-        <fieldset>
-            <legend>Ovarican Cancer Model Quiz</legend>
-            <div class="form-group">
-            <h1>Find out if you need a follow-up diagnosis of Ovarian Cancer</h1>
-            <div class="element">
-            <label for="age">Age: </label>
-            <input name="age" min="15" max="90" type="number" required>
-            <br>
-            <br> CEA:
-            <input name="cea" type="number" required>
-            <br>
-            <br> IBIL:
-            <input name="ibil" type="number" required>
-            <br>
-            <br> NEU:
-            <input name="neu" type="number" required>
-            <br>
-            <br> Menopause (0 for false and 1 for true):
-            <input name="meno" type="number" required>
-            <br>
-            <br> CA125:
-            <input name="ca125" type="number" required>
-            <br>
-            <br> ALB:
-            <input name="alb" type="number" required>
-            <br>
-            <br> HE4:
-            <input name="he4" type="number" required>
-            <br>
-            <br> GLO:
-            <input name="glo" type="number" required>
-            <br>
-            <br> LYM%:
-            <input name="lym" type="number" required>
-            <br>
-            <br>
-            <input type="submit">
-        </div>
-        </fieldset>
-        </form>
-    {% endif %}
-        <br>
-     {% if result %}
-        <fieldset>
-            <legend>  Entered values: </legend>
-            <div class="result" align="center">
-                <!-- Our 'result' is false until a prediction has been made -->
-                
-                    <!-- Loop through dictionary and print key:value pair -->
-                    {% for variable in original_input %}
-                        <b>{{ variable }}:</b> {{ original_input[variable] }}
-                    {% endfor %}
-                    <br>
-                    <!-- Print prediction -->
-                    {% if prediction[0] > 0.5 %}
-                    <br> <p style="font-size:50px">The ML model does suggest an advanced screening for Ovarian Cancer</p>
-                    {% else %}
-                    <br> <p style="font-size:50px">The ML model does NOT suggest an advanced screening for Ovarian Cancer</p>
-                    {% endif %}
-            
+        
+        <div class="container">
+          <div class="row">
+            <div class="col" name="col1">
+                <div class="container">
+                  <div class="row">
+                  ROW 1
+                  </div>
+                  <div class="row">
+                  ROW 1
+                  </div>
+                  <div class="row">
+                  ROW 1
+                  </div>
+                  <div class="row">
+                  ROW 1
+                  </div>
+                  <div class="row">
+                  ROW 1
+                  </div>
+                </div>
             </div>
-            </fieldset>
-        {% endif %}
+            <div class="col" name="col2">
+                <div class="container">
+                  <div class="row">
+                      {% if not(result) %}
+                              <!-- Use the action attribute to call the 'main' function -->
+                              <form action="{{ url_for('main') }}" method="POST">
+                                  <div class="form-group">
+                                  <h1>Find out if you need a follow-up diagnosis of Ovarian Cancer</h1>
+                                  <div class="element">
+                                  <label for="age">Age: </label>
+                                  <input name="age" min="15" max="90" type="number" required>
+                                  <br>
+                                  <br> CEA:
+                                  <input name="cea" type="number" required>
+                                  <br>
+                                  <br> IBIL:
+                                  <input name="ibil" type="number" required>
+                                  <br>
+                                  <br> NEU:
+                                  <input name="neu" type="number" required>
+                                  <br>
+                                  <br> Menopause (0 for false and 1 for true):
+                                  <input name="meno" type="number" required>
+                                  <br>
+                                  <br> CA125:
+                                  <input name="ca125" type="number" required>
+                                  <br>
+                                  <br> ALB:
+                                  <input name="alb" type="number" required>
+                                  <br>
+                                  <br> HE4:
+                                  <input name="he4" type="number" required>
+                                  <br>
+                                  <br> GLO:
+                                  <input name="glo" type="number" required>
+                                  <br>
+                                  <br> LYM%:
+                                  <input name="lym" type="number" required>
+                                  <br>
+                                  <br>
+                                  <input type="submit">
+                              </div>
+                              </form>
+                          {% endif %}
+                              <br>
+                           {% if result %}
+                             
+                                  <div class="result" align="center">
+                                      <!-- Our 'result' is false until a prediction has been made -->
+                                      
+                                          <!-- Loop through dictionary and print key:value pair -->
+                                          {% for variable in original_input %}
+                                              <b>{{ variable }}:</b> {{ original_input[variable] }}
+                                          {% endfor %}
+                                          <br>
+                                          <!-- Print prediction -->
+                                          {% if prediction[0] > 0.5 %}
+                                          <br> <p style="font-size:50px">The ML model does suggest an advanced screening for Ovarian Cancer</p>
+                                          {% else %}
+                                          <br> <p style="font-size:50px">The ML model does NOT suggest an advanced screening for Ovarian Cancer</p>
+                                          {% endif %}
+                                  
+                                  </div>
+                          
+                              {% endif %}
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+ 
  
     </body>
  
 </html>
+
