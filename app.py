@@ -20,7 +20,7 @@ def main():
         cea = request.form.get("cea")
         ibil = request.form.get("ibil")
         neu = request.form.get("neu")
-        meno = request.form.get("menopause")
+        meno = request.form.get("meno")
         ca125 = request.form.get("ca125")
         alb = request.form.get("alb")
         he4 = request.form.get("he4")
