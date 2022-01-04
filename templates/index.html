@@ -21,7 +21,7 @@
     </head>
  
     <body>
- {% if !result %}
+ {% if not(result) %}
         <!-- Use the action attribute to call the 'main' function -->
         <form action="{{ url_for('main') }}" method="POST">
         <fieldset>
