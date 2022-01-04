@@ -198,11 +198,14 @@
                                     <label for="inputMenopause">Menopause</label>
                                   
                                     <select id="inputMenopause" name="meno" class="form-control" required>
-                                        {% if original_input['Menopause'] == 1 %}
+                                        {% if original_input['Menopause'] == "1" %}
                                         <option value="1" selected>Yes</option>
                                         <option value="0">No</option>
-                                        {% elif original_input['Menopause'] == 0 %}
+                                        {% elif original_input['Menopause'] == "0" %}
                                         <option value="1">Yes</option>
+                                        <option value="0" selected>No</option>
+                                        {% else %}
+                                        <option value="1" selected>HELLO</option>
                                         <option value="0" selected>No</option>
                                         {% endif %}
                                     </select>
