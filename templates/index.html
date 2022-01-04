@@ -16,6 +16,7 @@
             border: 1px solid #ccc;
         }
         </style>
+       
         
         <title>Ovarian Cancer Model</title>
     </head>
@@ -195,11 +196,15 @@
                                 <div class="form-group col-md-12">
 
                                     <label for="inputMenopause">Menopause</label>
-
+                             
                                     <select id="inputMenopause" name="meno" class="form-control" required>
-                                        <option selected>Choose...</option>
-                                        <option value="1">Yes</option>
+                                        {% if meno == "1" %}
+                                        <option value="1" selected>Yes</option>
                                         <option value="0">No</option>
+                                        {% elif meno == "0" %}
+                                        <option value="1">Yes</option>
+                                        <option value="0" selected>No</option>
+                                        {% endif %}
                                     </select>
                                 </div>
 
