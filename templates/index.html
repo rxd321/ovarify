@@ -76,6 +76,11 @@
                     <h1>Ovarian Cancer Prediction Using Machine Learning</h1>
                 </div>
                 <div class="row">
+                    {% for variable in test_array %}
+                    <b>{{ variable }}:</b> {{ test_array[variable] }}
+                    {% endfor %}
+                </div>
+                <div class="row">
                     <div class="form-group">
                         <div class="form-check">
                             {% if not(result) %}
