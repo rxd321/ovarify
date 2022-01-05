@@ -54,7 +54,7 @@
         </style>
        <script language="javascript">
            function resetForm() {
-               document.getElementById('gridCheck').reset();
+               document.getElementByClassName('form-check-input').reset();
                document.getElementById('myform').reset();
                document.getElementsByClassName('result').hide();
            }
@@ -79,9 +79,9 @@
                     <div class="form-group">
                         <div class="form-check">
                             {% if not(result) %}
-                            <input class="form-check-input" type="checkbox" id="gridCheck" required>
+                            <input class="form-check-input" type="checkbox" required>
                             {% else %}
-                            <input class="form-check-input" type="checkbox" id="gridCheck" checked>
+                            <input class="form-check-input" type="checkbox" checked>
                             {% endif %}
                             <label class="form-check-label" for="gridCheck">
                                 I understand that this tool is an approximation based on a machine learning model and should not be construed as medical advice.
