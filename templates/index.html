@@ -54,7 +54,14 @@
         </style>
        <script language="javascript">
            function resetForm() {
+               document.getElementById('gridCheck').reset();
                document.getElementById('myform').reset();
+               document.getElementsByClassName('result').hide();
+           }
+
+           function validate() {
+               document.getElementsByClassName('result').show();
+               return true;
            }
        </script>
         
@@ -63,7 +70,7 @@
  
     <body>
         <!-- Use the action attribute to call the 'main' function -->
-        <form action="{{ url_for('main') }}" method="POST">
+        <form action="{{ url_for('main') }}" method="POST" onsubmit="return validate()">
             <div class="container">
                 <div class="row">
                     <h1>Ovarian Cancer Prediction Using Machine Learning</h1>
@@ -71,7 +78,11 @@
                 <div class="row">
                     <div class="form-group">
                         <div class="form-check">
+                            {% if not(result) %}
                             <input class="form-check-input" type="checkbox" id="gridCheck" required>
+                            {% else %}
+                            <input class="form-check-input" type="checkbox" id="gridCheck" checked>
+                            {% end if %}
                             <label class="form-check-label" for="gridCheck">
                                 I understand that this tool is an approximation based on a machine learning model and should not be construed as medical advice.
                             </label>
@@ -337,7 +348,8 @@
 
                         </div>
                         <button type="submit" class="btn btn-primary">Predict</button>
-
+                        <button type="reset" class="btn btn-secondary" onclick="return resetForm();">Reset</button>
+                       
                     </div>
 
                 </div>
