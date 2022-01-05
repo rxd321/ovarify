@@ -80,11 +80,13 @@
                 </div>
                 <hr />
                 <div class="row result">
-                    <!-- Print prediction -->
-                    {% if prediction[0] > 0.5 %}
-                    <br> <p style="font-size:18px">The ML model <span class="does">DOES </span>suggest an advanced screening for Ovarian Cancer</p>
-                    {% else %}
-                    <br> <p style="font-size:18px">The ML model <span class="doesNot">DOES NOT</span> suggest an advanced screening for Ovarian Cancer</p>
+                    {% if result %}
+                        <!-- Print prediction -->
+                        {% if prediction[0] > 0.5 %}
+                        <br> <p style="font-size:18px">The ML model <span class="does">DOES </span>suggest an advanced screening for Ovarian Cancer</p>
+                        {% else %}
+                        <br> <p style="font-size:18px">The ML model <span class="doesNot">DOES NOT</span> suggest an advanced screening for Ovarian Cancer</p>
+                        {% endif %}
                     {% endif %}
 
                 </div>
