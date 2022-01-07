@@ -287,12 +287,7 @@
                                         <input type="number" class="form-control alb" min="0.0" max="1000000.0" step="any" name="alb" id="inputALB" required>
                                     </div>
                                 </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                        <label for="inputHE4">HE4</label>
-                                        <input type="number" class="form-control he4" min="0.0" max="1000000.0" step="any" name="he4" id="inputHE4" required>
-                                    </div>
-                                </div>
+
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
                                         <label for="inputGLO">GLO</label>
@@ -303,6 +298,12 @@
                                     <div class="form-group col-md-12">
                                         <label for="inputLYM">LYM%</label>
                                         <input type="number" class="form-control lym" min="0.0" max="1000000.0" step="any" name="lym" id="inputLYM" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputHE4">HE4</label> (Optional)
+                                        <input type="number" class="form-control he4" min="0.0" max="1000000.0" step="any" name="he4" id="inputHE4">
                                     </div>
                                 </div>
                             </div>
@@ -371,12 +372,7 @@
                                         <input type="number" class="form-control alb" min="0.0" max="1000000.0" step="any" name="alb" id="inputALB" required value="{{ original_input['ALB']}}">
                                     </div>
                                 </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                        <label for="inputHE4">HE4</label>
-                                        <input type="number" class="form-control he4" min="0.0" max="1000000.0" step="any" name="he4" id="inputHE4" required value="{{ original_input['HE4']}}">
-                                    </div>
-                                </div>
+
                                 <div class="form-row">
                                     <div class="form-group col-md-12">
                                         <label for="inputGLO">GLO</label>
@@ -387,6 +383,12 @@
                                     <div class="form-group col-md-12">
                                         <label for="inputLYM">LYM%</label>
                                         <input type="number" class="form-control lym" min="0.0" max="1000000.0" step="any" name="lym" id="inputLYM" required value="{{ original_input['LYM%']}}">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputHE4">HE4</label> (Optional)
+                                        <input type="number" class="form-control he4" min="0.0" max="1000000.0" step="any" name="he4" id="inputHE4" value="{{ original_input['HE4']}}">
                                     </div>
                                 </div>
                             </div>                            
