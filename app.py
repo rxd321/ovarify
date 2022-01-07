@@ -23,7 +23,7 @@ def main():
         glo = request.form.get("glo")
         lym = request.form.get("lym")
         print("HE4",he4)
-        if he4 == None:
+        if he4 == None or he4 == '':
             # Use pickle to load in the pre-trained 9 features model
             filename = "model_9_xgb.pkl"
             model = pickle.load(open(filename, "rb"))
