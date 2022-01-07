@@ -31,7 +31,7 @@ def main():
                                        columns=['Age','CEA','IBIL','NEU','Menopause','CA125','ALB','GLO','LYM%'],
                                        dtype=float,
                                        index=['input'])
-        else
+        else:
             # Use pickle to load in the pre-trained 10 features model
             filename = "model.pkl"
             model = pickle.load(open(filename, "rb"))
