@@ -122,11 +122,11 @@
  
     <body>
         <!-- Use the action attribute to call the 'main' function -->
-        <form action="{{ url_for('main') }}" method="POST" onsubmit="return validate()" id="mainForm">
+        <form action="{{ url_for('main') }}" method="POST" onsubmit="validate()" id="mainForm">
             <div class="container mainContainer rounded-bottom">
                 <div class="row header justify-content-center align-self-center">
                     <h1><span style='font-size:40px; font-weight:bold;'>&#9792;  </span>Ovarian Cancer Prediction Using Machine Learning</h1>
-                </div>            
+                </div>
                 <div class="row">
                     <div class="form-group">
                         <div class="form-check">
@@ -141,15 +141,17 @@
                         </div>
                     </div>
                 </div>
-            
+                {% if result %}
+                <div class="row"><span>RESULT : </span>prediction[0]</div>
+                {% endif %}
                 <div class="row result">
                     {% if result %}
-                        <!-- Print prediction -->
-                        {% if prediction[0] > 0.5 %}
-                        <p style="font-size:18px">The ML model <span class="does">DOES </span>suggest an advanced screening for Ovarian Cancer</p>
-                        {% else %}
-                        <br> <p style="font-size:18px">The ML model <span class="doesNot">DOES NOT</span> suggest an advanced screening for Ovarian Cancer</p>
-                        {% endif %}
+                    <!-- Print prediction -->
+                    {% if prediction[0] > 0.5 %}
+                    <p style="font-size:18px">The ML model <span class="does">DOES </span>suggest an advanced screening for Ovarian Cancer</p>
+                    {% else %}
+                    <br> <p style="font-size:18px">The ML model <span class="doesNot">DOES NOT</span> suggest an advanced screening for Ovarian Cancer</p>
+                    {% endif %}
                     {% endif %}
 
                 </div>
@@ -260,190 +262,190 @@
                                     </span>
                                     <br>
                                 </div>
-                                </div>
                             </div>
                         </div>
+                    </div>
 
-                            <div class="col-md-4" name="col2">
+                    <div class="col-md-4" name="col2">
 
-                                <div class="container">
-                                    <div class="row justify-content-center align-self-center">
-                                        <span style="padding-top:10px;"><i>Please enter the following values to check against the ML model:</i></span>
-                                    </div>
-                                    <div class="row" style="color:lightblue;">
-                                        <a id="sample1" href="#">Sample 1</a>
-                                        <span style="width:100px"></span>
-                                        <a id="sample2" href="#">Sample 2</a>
-                                    </div>
-                                    {% if not(result) %}
-                                    <div class="row">
-                                        <div class="form-row">
-                                            <div class="form-group col-md-12">
-                                                <label for="inputAge">Age</label>
-                                                <input type="number" class="form-control age" name="age" min="15" max="100" step="1" placeholder="Age (15-100)" id="inputAge" required>
-                                            </div>
-
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-12">
-                                                <label for="inputCEA">CEA</label>
-                                                <input type="number" class="form-control cea" name="cea" min="0.0" max="10.0" step="any" id="inputCEA" required>
-                                            </div>
-
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-12">
-                                                <label for="inputIBIL">IBIL</label>
-                                                <input type="number" class="form-control ibil" name="ibil" min="0.0" max="10.0" step="any" id="inputIBIL" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-12">
-                                                <label for="inputNEU">NEU</label>
-                                                <input type="number" class="form-control neu" name="neu" min="0" max="100" step="any" id="inputNEU" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-12">
-                                                <label for="inputMenopause">Menopause</label>
-                                                <select class="dropdown meno" style="width:100%;" id="inputMenopause" name="meno" required>
-                                                    <option value="1"> Yes</option>
-                                                    <option value="0"> No</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-12">
-                                                <label for="inputCA125">CA125</label>
-                                                <input type="number" class="form-control ca125" min="0.0" max="100000.0" step="any" name="ca125" id="inputCA125" required>
-                                            </div>
-
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-12">
-                                                <label for="inputALB">ALB</label>
-                                                <input type="number" class="form-control alb" min="0.0" max="1000000.0" step="any" name="alb" id="inputALB" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-row">
-                                            <div class="form-group col-md-12">
-                                                <label for="inputGLO">GLO</label>
-                                                <input type="number" class="form-control glo" min="0.0" max="1000000.0" step="any" name="glo" id="inputGLO" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-12">
-                                                <label for="inputLYM">LYM%</label>
-                                                <input type="number" class="form-control lym" min="0.0" max="1000000.0" step="any" name="lym" id="inputLYM" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-12">
-                                                <label for="inputHE4">HE4</label> (Optional)
-                                                <input type="number" class="form-control he4" min="0.0" max="1000000.0" step="any" name="he4" id="inputHE4">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {% endif %}
-
-                                    {% if result %}
-                                    <div class="row">
-                                        <div class="form-row">
-                                            <div class="form-group col-md-12">
-                                                <label for="inputAge">Age</label>
-                                                <input type="number" class="form-control age" name="age" min="15" max="100" step="1" placeholder="Age (15-100)" id="inputAge" required value="{{ original_input['Age']}}">
-                                            </div>
-
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-12">
-                                                <label for="inputCEA">CEA</label>
-                                                <input type="number" class="form-control cea" name="cea" min="0.0" max="10.0" step="any" id="inputCEA" required value="{{ original_input['CEA']}}">
-                                            </div>
-
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-12">
-                                                <label for="inputIBIL">IBIL</label>
-                                                <input type="number" class="form-control ibil" name="ibil" min="0.0" max="10.0" step="any" id="inputIBIL" required value="{{ original_input['IBIL']}}">
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-12">
-                                                <label for="inputNEU">NEU</label>
-                                                <input type="number" class="form-control neu" name="neu" min="0" max="100" step="any" id="inputNEU" required value="{{ original_input['NEU']}}">
-                                            </div>
-                                        </div>
-                                        <br />
-                                        <div class="form-row">
-                                            <div class="form-group col-md-12">
-                                                <label for="inputMenopause">Menopause</label>
-                                                <select id="inputMenopause" name="meno" class="dropdown meno" style="width:100%;" required>
-                                                    {% if original_input['Menopause'] == "1" %}
-
-                                                    <option value="1" selected>Yes</option>
-                                                    <option value="0">No</option>
-                                                    {% elif original_input['Menopause'] == "0" %}
-
-                                                    <option value="1">Yes</option>
-                                                    <option value="0" selected>No</option>
-                                                    {% else %}
-
-                                                    <option value="1">Yes</option>
-                                                    <option value="0">No</option>
-                                                    {% endif %}
-                                                </select>
-                                            </div>
-
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-12">
-                                                <label for="inputCA125">CA125</label>
-                                                <input type="number" class="form-control ca125" min="0.0" max="1000000.0" step="any" name="ca125" id="inputCA125" required value="{{ original_input['CA125']}}">
-                                            </div>
-
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-12">
-                                                <label for="inputALB">ALB</label>
-                                                <input type="number" class="form-control alb" min="0.0" max="1000000.0" step="any" name="alb" id="inputALB" required value="{{ original_input['ALB']}}">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-row">
-                                            <div class="form-group col-md-12">
-                                                <label for="inputGLO">GLO</label>
-                                                <input type="number" class="form-control glo" min="0.0" max="1000000.0" step="any" name="glo" id="inputGLO" required value="{{ original_input['GLO']}}">
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-12">
-                                                <label for="inputLYM">LYM%</label>
-                                                <input type="number" class="form-control lym" min="0.0" max="1000000.0" step="any" name="lym" id="inputLYM" required value="{{ original_input['LYM%']}}">
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-12">
-                                                <label for="inputHE4">HE4</label> (Optional)
-                                                <input type="number" class="form-control he4" min="0.0" max="1000000.0" step="any" name="he4" id="inputHE4" value="{{ original_input['HE4']}}">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {% endif %}
-
-                                </div>
-                                <div class="row justify-content-left align-self-center" style="padding-bottom:10px;padding-left:10px;">
-                                    <button type="submit" class="btn btn-primary">Predict</button>
-                                    <span style="width:120px"></span>
-                                    <button type="reset" class="btn btn-secondary" onclick="resetForm();">Reset</button>
-                                </div>
-
+                        <div class="container">
+                            <div class="row justify-content-center align-self-center">
+                                <span style="padding-top:10px;"><i>Please enter the following values to check against the ML model:</i></span>
                             </div>
+                            <div class="row" style="color:lightblue;">
+                                <a id="sample1" href="#">Sample 1</a>
+                                <span style="width:100px"></span>
+                                <a id="sample2" href="#">Sample 2</a>
+                            </div>
+                            {% if not(result) %}
+                            <div class="row">
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputAge">Age</label>
+                                        <input type="number" class="form-control age" name="age" min="15" max="100" step="1" placeholder="Age (15-100)" id="inputAge" required>
+                                    </div>
 
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputCEA">CEA</label>
+                                        <input type="number" class="form-control cea" name="cea" min="0.0" max="10.0" step="any" id="inputCEA" required>
+                                    </div>
+
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputIBIL">IBIL</label>
+                                        <input type="number" class="form-control ibil" name="ibil" min="0.0" max="10.0" step="any" id="inputIBIL" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputNEU">NEU</label>
+                                        <input type="number" class="form-control neu" name="neu" min="0" max="100" step="any" id="inputNEU" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputMenopause">Menopause</label>
+                                        <select class="dropdown meno" style="width:100%;" id="inputMenopause" name="meno" required>
+                                            <option value="1"> Yes</option>
+                                            <option value="0"> No</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputCA125">CA125</label>
+                                        <input type="number" class="form-control ca125" min="0.0" max="100000.0" step="any" name="ca125" id="inputCA125" required>
+                                    </div>
+
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputALB">ALB</label>
+                                        <input type="number" class="form-control alb" min="0.0" max="1000000.0" step="any" name="alb" id="inputALB" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputGLO">GLO</label>
+                                        <input type="number" class="form-control glo" min="0.0" max="1000000.0" step="any" name="glo" id="inputGLO" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputLYM">LYM%</label>
+                                        <input type="number" class="form-control lym" min="0.0" max="1000000.0" step="any" name="lym" id="inputLYM" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputHE4">HE4</label> (Optional)
+                                        <input type="number" class="form-control he4" min="0.0" max="1000000.0" step="any" name="he4" id="inputHE4">
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+
+                            {% if result %}
+                            <div class="row">
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputAge">Age</label>
+                                        <input type="number" class="form-control age" name="age" min="15" max="100" step="1" placeholder="Age (15-100)" id="inputAge" required value="{{ original_input['Age']}}">
+                                    </div>
+
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputCEA">CEA</label>
+                                        <input type="number" class="form-control cea" name="cea" min="0.0" max="10.0" step="any" id="inputCEA" required value="{{ original_input['CEA']}}">
+                                    </div>
+
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputIBIL">IBIL</label>
+                                        <input type="number" class="form-control ibil" name="ibil" min="0.0" max="10.0" step="any" id="inputIBIL" required value="{{ original_input['IBIL']}}">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputNEU">NEU</label>
+                                        <input type="number" class="form-control neu" name="neu" min="0" max="100" step="any" id="inputNEU" required value="{{ original_input['NEU']}}">
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputMenopause">Menopause</label>
+                                        <select id="inputMenopause" name="meno" class="dropdown meno" style="width:100%;" required>
+                                            {% if original_input['Menopause'] == "1" %}
+
+                                            <option value="1" selected>Yes</option>
+                                            <option value="0">No</option>
+                                            {% elif original_input['Menopause'] == "0" %}
+
+                                            <option value="1">Yes</option>
+                                            <option value="0" selected>No</option>
+                                            {% else %}
+
+                                            <option value="1">Yes</option>
+                                            <option value="0">No</option>
+                                            {% endif %}
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputCA125">CA125</label>
+                                        <input type="number" class="form-control ca125" min="0.0" max="1000000.0" step="any" name="ca125" id="inputCA125" required value="{{ original_input['CA125']}}">
+                                    </div>
+
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputALB">ALB</label>
+                                        <input type="number" class="form-control alb" min="0.0" max="1000000.0" step="any" name="alb" id="inputALB" required value="{{ original_input['ALB']}}">
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputGLO">GLO</label>
+                                        <input type="number" class="form-control glo" min="0.0" max="1000000.0" step="any" name="glo" id="inputGLO" required value="{{ original_input['GLO']}}">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputLYM">LYM%</label>
+                                        <input type="number" class="form-control lym" min="0.0" max="1000000.0" step="any" name="lym" id="inputLYM" required value="{{ original_input['LYM%']}}">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="inputHE4">HE4</label> (Optional)
+                                        <input type="number" class="form-control he4" min="0.0" max="1000000.0" step="any" name="he4" id="inputHE4" value="{{ original_input['HE4']}}">
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+
+                        </div>
+                        <div class="row justify-content-left align-self-center" style="padding-bottom:10px;padding-left:10px;">
+                            <button type="submit" class="btn btn-primary">Predict</button>
+                            <span style="width:120px"></span>
+                            <button type="reset" class="btn btn-secondary" onclick="resetForm();">Reset</button>
                         </div>
 
                     </div>
+
+                </div>
+
+            </div>
         </form>
     </body>
 </html>
