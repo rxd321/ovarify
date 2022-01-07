@@ -41,7 +41,7 @@ def main():
                                        dtype=float,
                                        index=['input'])
 
-        
+        print(model)
         # Get the model's prediction
         # Given that the prediction is stored in an array we simply extract by indexing
         prediction = model.predict(input_variables)
