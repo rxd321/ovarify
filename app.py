@@ -31,20 +31,20 @@ def main():
                                        columns=['Age','CEA','IBIL','NEU','Menopause','CA125','ALB','GLO','LYM%'],
                                        dtype=float,
                                        index=['input'])
-                                               print(model)
-        # Get the model's prediction
-        # Given that the prediction is stored in an array we simply extract by indexing
-        prediction = model.predict(input_variables)
-    
-        # We now pass on the input from the from and the prediction to the index page
-        return render_template("index.html", original_input={'Age':age,'CEA':cea,'IBIL':ibil,'NEU':neu,'Menopause':meno,'CA125':ca125,'ALB':alb,'HE4':None,'GLO':glo,'LYM%':lym}, result=True, prediction=prediction)
-        else:
-            # Use pickle to load in the pre-trained 10 features model
-            filename = "model.pkl"
-            model = pickle.load(open(filename, "rb"))
-            # Create DataFrame based on input
-            input_variables = pd.DataFrame([[age, cea, ibil,neu,meno,ca125,alb,he4,glo,lym]],
-                                       columns=['Age','CEA','IBIL','NEU','Menopause','CA125','ALB','HE4','GLO','LYM%'],
+            print(model)
+            # Get the model's prediction
+            # Given that the prediction is stored in an array we simply extract by indexing
+            prediction = model.predict(input_variables)
+        
+            # We now pass on the input from the from and the prediction to the index page
+            return render_template("index.html", original_input={'Age':age,'CEA':cea,'IBIL':ibil,'NEU':neu,'Menopause':meno,'CA125':ca125,'ALB':alb,'HE4':None,'GLO':glo,'LYM%':lym}, result=True, prediction=prediction)
+            else:
+                # Use pickle to load in the pre-trained 10 features model
+                filename = "model.pkl"
+                model = pickle.load(open(filename, "rb"))
+                # Create DataFrame based on input
+                input_variables = pd.DataFrame([[age, cea, ibil,neu,meno,ca125,alb,he4,glo,lym]],
+                                           columns=['Age','CEA','IBIL','NEU','Menopause','CA125','ALB','HE4','GLO','LYM%'],
                                        dtype=float,
                                        index=['input'])
             print(model)
