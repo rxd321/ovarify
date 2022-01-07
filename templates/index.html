@@ -22,13 +22,18 @@
         .result {
         }
 
+        .mainContainer {
+            border:groove 1px gray;
+       
+        }
+
         .form-check {
             color: red;
         }
         .header {
             padding-left:10px;
             width: stretch;
-            background: transparent url('image1.png') !important;
+            background-color:lightgray !important;
         }
         #con11 {
             margin-top: 10px;
@@ -118,9 +123,9 @@
     <body>
         <!-- Use the action attribute to call the 'main' function -->
         <form action="{{ url_for('main') }}" method="POST" onsubmit="return validate()" id="mainForm">
-            <div class="container">
-                <div class="row header">
-                    <h1>Ovarian Cancer Prediction Using Machine Learning</h1>
+            <div class="container mainContainer rounded-bottom">
+                <div class="row header justify-content-center align-self-center">
+                    <h1><span style='font-size:40px; font-weight:bold;'>&#9792;  </span>Ovarian Cancer Prediction Using Machine Learning</h1>
                 </div>            
                 <div class="row">
                     <div class="form-group">
@@ -148,10 +153,10 @@
                     {% endif %}
 
                 </div>
-                <div class="row rounded" style="background-color:lightgray; padding-top:2px;">
+                <div class="row rounded" style="background-color:lightgray; padding-top:2px;margin-bottom:14px;margin-left:1px; margin-right:1px;">
                     <div class="col-md-8" name="col1">
                         <div class="row">
-                            <div class="container-fluid rounded" style="padding:10px; margin:10px; background-color:lightblue; z-index: 10;" id="con1">
+                            <div class="container-fluid rounded" style="padding:10px; background-color:lightblue; z-index: 10;" id="con1">
                                 <div class="row justify-content-center align-self-center">
                                     <h3>Features used by Machine Learning Model (XGBoost)</h3>
                                 </div>
@@ -263,7 +268,7 @@
 
                                 <div class="container">
                                     <div class="row justify-content-center align-self-center">
-                                        <h6 style="padding-top:10px; ">Please enter the following values to check against the ML model. Sample 1 and Sample 2 are provided for reference and depict actual values collected. </h6>
+                                        <span style="padding-top:10px;"><i>Please enter the following values to check against the ML model:</i></span>
                                     </div>
                                     <div class="row" style="color:lightblue;">
                                         <a id="sample1" href="#">Sample 1</a>
@@ -428,9 +433,9 @@
                                     {% endif %}
 
                                 </div>
-                                <div class="row">
+                                <div class="row justify-content-left align-self-center" style="padding-bottom:10px;padding-left:10px;">
                                     <button type="submit" class="btn btn-primary">Predict</button>
-                                    <span style="width:100px"></span>
+                                    <span style="width:120px"></span>
                                     <button type="reset" class="btn btn-secondary" onclick="resetForm();">Reset</button>
                                 </div>
 
