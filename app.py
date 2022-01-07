@@ -38,7 +38,7 @@ def main():
             prediction_prob = model.predict_proba(input_variables)[:,1]
             print(prediction_prob)
             # We now pass on the input from the from and the prediction to the index page
-            return render_template("index.html", original_input={'Age':age,'CEA':cea,'IBIL':ibil,'NEU':neu,'Menopause':meno,'CA125':ca125,'ALB':alb,'HE4':None,'GLO':glo,'LYM%':lym}, result=True, prediction=prediction)
+            return render_template("index.html", original_input={'Age':age,'CEA':cea,'IBIL':ibil,'NEU':neu,'Menopause':meno,'CA125':ca125,'ALB':alb,'HE4':None,'GLO':glo,'LYM%':lym}, result=True, prediction=prediction_prob)
         else:
             # Use pickle to load in the pre-trained 10 features model
             filename = "model.pkl"
@@ -56,6 +56,6 @@ def main():
             print(prediction_prob)
         
             # We now pass on the input from the from and the prediction to the index page
-            return render_template("index.html", original_input={'Age':age,'CEA':cea,'IBIL':ibil,'NEU':neu,'Menopause':meno,'CA125':ca125,'ALB':alb,'HE4':he4,'GLO':glo,'LYM%':lym}, result=True, prediction=prediction)
+            return render_template("index.html", original_input={'Age':age,'CEA':cea,'IBIL':ibil,'NEU':neu,'Menopause':meno,'CA125':ca125,'ALB':alb,'HE4':he4,'GLO':glo,'LYM%':lym}, result=True, prediction=prediction_prob)
     # If the request method is GET
     return render_template("index.html", result=False)
