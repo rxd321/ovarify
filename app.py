@@ -22,7 +22,7 @@ def main():
         he4 = request.form.get("he4")
         glo = request.form.get("glo")
         lym = request.form.get("lym")
-        
+        print("HE4",he4)
         if he4 == None:
             # Use pickle to load in the pre-trained 9 features model
             filename = "model_9_xgb.pkl"
@@ -31,7 +31,7 @@ def main():
                                        columns=['Age','CEA','IBIL','NEU','Menopause','CA125','ALB','GLO','LYM%'],
                                        dtype=float,
                                        index=['input'])
-            print(model)
+            
             # Get the model's prediction
             # Given that the prediction is stored in an array we simply extract by indexing
             prediction = model.predict(input_variables)
@@ -39,7 +39,8 @@ def main():
             # We now pass on the input from the from and the prediction to the index page
             return render_template("index.html", original_input={'Age':age,'CEA':cea,'IBIL':ibil,'NEU':neu,'Menopause':meno,'CA125':ca125,'ALB':alb,'HE4':None,'GLO':glo,'LYM%':lym}, result=True, prediction=prediction)
         else:
-                # Use pickle to load in the pre-trained 10 features model
+            print("HELLLO")
+            # Use pickle to load in the pre-trained 10 features model
             filename = "model.pkl"
             model = pickle.load(open(filename, "rb"))
             # Create DataFrame based on input
@@ -47,7 +48,7 @@ def main():
                                            columns=['Age','CEA','IBIL','NEU','Menopause','CA125','ALB','HE4','GLO','LYM%'],
                                        dtype=float,
                                        index=['input'])
-            print(model)
+       
             # Get the model's prediction
             # Given that the prediction is stored in an array we simply extract by indexing
             prediction = model.predict(input_variables)
