@@ -25,7 +25,7 @@ def main():
        
         if he4 == None or he4 == '':
             # Use pickle to load in the pre-trained 9 features model
-            filename = "model_9_xgb.pkl"
+            filename = "model_9_rf.pkl"
             model = pickle.load(open(filename, "rb"))
             input_variables = pd.DataFrame([[age, cea, ibil,neu,meno,ca125,alb,glo,lym]],
                                        columns=['Age','CEA','IBIL','NEU','Menopause','CA125','ALB','GLO','LYM%'],
@@ -41,7 +41,7 @@ def main():
             return render_template("index.html", original_input={'Age':age,'CEA':cea,'IBIL':ibil,'NEU':neu,'Menopause':meno,'CA125':ca125,'ALB':alb,'HE4':None,'GLO':glo,'LYM%':lym}, result=True, prediction=prediction_prob)
         else:
             # Use pickle to load in the pre-trained 10 features model
-            filename = "model.pkl"
+            filename = "model_rf.pkl"
             model = pickle.load(open(filename, "rb"))
             # Create DataFrame based on input
             input_variables = pd.DataFrame([[age, cea, ibil,neu,meno,ca125,alb,he4,glo,lym]],
