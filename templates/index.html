@@ -48,9 +48,8 @@
         }
 
         .medText {
-            padding-left: 8px;
-            padding-top: 2px;
-            padding-right: 6px;
+            margin-right:14px;
+            margin-left:25px !important;
         }
 
         .doesNot {
@@ -63,7 +62,8 @@
             color: red;
         }
         .boxPadding{
-            padding:6px;
+            padding-left:16px;
+            padding-top:6px;
         }
     </style>
     <script language="javascript">
@@ -145,13 +145,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="row result">
+                <div class="row result" style="padding-left:18px;">
                     {% if result %}
                     <!-- Print prediction -->
                     {% if prediction[0] >= 0.5 %}
-                    <p style="font-size:18px">The ML model <span class="does">does </span>suggest an advanced screening for Ovarian Cancer with <span class="does">{round({prediction[0]} *100,2) }</span> confidence </p>
+                    <p style="font-size:18px">The ML model <span class="does">does </span>suggest an advanced screening for Ovarian Cancer with <span class="does">{{ prediction[0] * 100 | round(2, 'ceil')}}</span> confidence </p>
                     {% else %}
-                    <br> <p style="font-size:18px">The ML model <span class="doesNot">does not</span> suggest an advanced screening for Ovarian Cancer with <span class="doesNot">{round({prediction[0]} *100,2) }</span> confidence</p>
+                    <br> <p style="font-size:18px">The ML model <span class="doesNot">does not</span> suggest an advanced screening for Ovarian Cancer with <span class="doesNot">{{ prediction[0] * 100 | round(2, 'ceil')}}</span> confidence</p>
                     {% endif %}
                     {% endif %}
 
@@ -159,8 +159,8 @@
                 <div class="row rounded" style="background-color:lightgray; padding-top:2px;margin-bottom:14px;margin-left:1px; margin-right:1px;">
                     <div class="col-md-8" name="col1">
                         <div class="row">
-                            <div class="container-fluid rounded" style="padding:10px; background-color:lightblue; z-index: 10;" id="con1">
-                                <div class="row justify-content-center align-self-center">
+                            <div class="container-fluid rounded" style="padding:4px; padding-top:14px; background-color:lightblue; z-index: 10;" id="con1">
+                                <div class="row" style="margin-left:10px">
                                     <h3>Features used by Machine Learning Model (XGBoost)</h3>
                                 </div>
                                 <div class="row">
@@ -251,20 +251,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="container-fluid rounded" style="padding:10px; margin:10px; background-color:beige; z-index: 10;" id="con1">
-                                <div class="row justify-content-center align-self-center">
-                                    <h5>Citations</h5>
-                                </div>
-                                <div class="row">
-                                    <b class="medText">Citation List</b>
-                                    <span class="medText">
-                                        Citation 1
-                                    </span>
-                                    <br>
-                                </div>
-                            </div>
-                        </div>
+                      
                     </div>
 
                     <div class="col-md-4" name="col2">
