@@ -24,6 +24,7 @@
 
         .mainContainer {
             border:groove 1px gray;
+           
        
         }
 
@@ -60,6 +61,9 @@
         .does {
             font-weight: bold;
             color: red;
+        }
+        .boxPadding{
+            padding:6px;
         }
     </style>
     <script language="javascript">
@@ -127,7 +131,7 @@
                 <div class="row header justify-content-center align-self-center">
                     <h1><span style='font-size:40px; font-weight:bold;'>&#9792;  </span>Ovarian Cancer Prediction Using Machine Learning</h1>
                 </div>
-                <div class="row">
+                <div class="row boxPadding">
                     <div class="form-group">
                         <div class="form-check">
                             {% if not(result) %}
@@ -136,21 +140,18 @@
                             <input class="form-check-input" type="checkbox" checked>
                             {% endif %}
                             <label class="form-check-label" for="gridCheck">
-                                I understand that this tool is an approximation based on a machine learning model and should not be construed as medical advice.
+                                I understand that this tool is an approximation based on a machine learning model and should not be construed as medical advice
                             </label>
                         </div>
                     </div>
                 </div>
-                {% if result %}
-                <div class="row"><span>The predictiona as per the model is : </span>{{prediction[0]}} * 100</div>
-                {% endif %}
                 <div class="row result">
                     {% if result %}
                     <!-- Print prediction -->
-                    {% if prediction[0] > 0.5 %}
-                    <p style="font-size:18px">The ML model <span class="does">DOES </span>suggest an advanced screening for Ovarian Cancer</p>
+                    {% if prediction[0] >= 0.5 %}
+                    <p style="font-size:18px">The ML model <span class="does">does </span>suggest an advanced screening for Ovarian Cancer with <span class="does">{round({prediction[0]} *100,2) }</span> confidence </p>
                     {% else %}
-                    <br> <p style="font-size:18px">The ML model <span class="doesNot">DOES NOT</span> suggest an advanced screening for Ovarian Cancer</p>
+                    <br> <p style="font-size:18px">The ML model <span class="doesNot">does not</span> suggest an advanced screening for Ovarian Cancer with <span class="doesNot">{round({prediction[0]} *100,2) }</span> confidence</p>
                     {% endif %}
                     {% endif %}
 
