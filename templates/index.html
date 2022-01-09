@@ -149,11 +149,11 @@
                     {% if result %}
                     <!-- Print prediction -->
                     <span> {{prediction[0]}}</span>
-                    <span> {{prediction[1]}}</span>
+                    <span> {{1-prediction[0]}}</span>
                     {% if prediction[0] >= 0.5 %}
                     <p style="font-size:18px">The ML model <span class="does">does </span>suggest an advanced screening for Ovarian Cancer with <span class="does">{{ (100 * prediction[0])| round(2,'ceil')|int }}% </span> confidence </p>
                     {% else %}
-                    <br> <p style="font-size:18px">The ML model <span class="doesNot">does not</span> suggest an advanced screening for Ovarian Cancer with <span class="doesNot">{{ (100 * prediction[1])|round(2,'ceil')|int }}%</span> confidence</p>
+                    <br> <p style="font-size:18px">The ML model <span class="doesNot">does not</span> suggest an advanced screening for Ovarian Cancer with <span class="doesNot">{{ (100 * (1-prediction[0]))|round(2,'ceil')|int }}%</span> confidence</p>
                     {% endif %}
                     {% endif %}
 
