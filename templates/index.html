@@ -149,9 +149,9 @@
                     {% if result %}
                     <!-- Print prediction -->
                     {% if prediction[0] >= 0.5 %}
-                    <p style="font-size:18px">The ML model <span class="does">does </span>suggest an advanced screening for Ovarian Cancer with <span class="does">{{ prediction[0] * 100 | round(2, 'ceil')}}</span> confidence </p>
+                    <p style="font-size:18px">The ML model <span class="does">does </span>suggest an advanced screening for Ovarian Cancer with <span class="does">{{ prediction[0] * 100|round(2)}}% </span> confidence </p>
                     {% else %}
-                    <br> <p style="font-size:18px">The ML model <span class="doesNot">does not</span> suggest an advanced screening for Ovarian Cancer with <span class="doesNot">{{ prediction[0] * 100 | round(2, 'ceil')}}</span> confidence</p>
+                    <br> <p style="font-size:18px">The ML model <span class="doesNot">does not</span> suggest an advanced screening for Ovarian Cancer with <span class="doesNot">{{ prediction[1] * 100|round(2)}}%</span> confidence</p>
                     {% endif %}
                     {% endif %}
 
